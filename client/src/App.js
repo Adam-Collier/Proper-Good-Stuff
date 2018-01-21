@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import {Header} from './components/Header'
-import {Utils} from './components/Utils'
+import { Header } from './components/Header'
+import { Utils } from './components/Utils'
+import Scroller from './components/Scroller'
+
 
 class App extends Component {
   render() {
@@ -17,6 +19,7 @@ class App extends Component {
         </p> */}
         <Header />
         <Utils />
+        <Scroller />
       </div>
     );
   }
