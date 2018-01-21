@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css?family=Palanquin:400,500,600');
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+p,
+button{
+  font-family: 'Palanquin', sans-serif;
+
+  &:focus{
+    outline: none;
+  }
+}
+
+p{
+  font-weight: 300;
+}

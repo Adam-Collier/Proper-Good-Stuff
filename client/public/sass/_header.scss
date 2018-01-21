@@ -1,0 +1,25 @@
+.header{
+  height: 55px;
+  color: #FFFFFF;
+  background: #2C2C2C;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 40px;
+
+  div{
+    display: flex;
+    align-items: center;
+    display: block;
+  }
+
+  svg{
+    margin-top: 4px;
+    width: 220px;
+  }
+
+  p{
+    display: inline-block;
+    padding-left: 15px;
+  }
+}
