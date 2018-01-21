@@ -1,0 +1,32 @@
+.scroller{
+  width: calc(100vw - 35px);
+  height: calc(100vh - 128px);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  white-space:nowrap;
+  padding-left: 35px;
+}
+
+.site{
+  // display: inline;
+  display: inline-block;
+  vertical-align:top;
+  margin-right: 50px;
+
+  img{
+    width: 750px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.15);
+    display: block;
+  }
+
+  a{
+    display: block;
+    margin-bottom: 15px;
+  }
+
+  div{
+    display: flex;
+    justify-content: space-between;
+  }
+}
