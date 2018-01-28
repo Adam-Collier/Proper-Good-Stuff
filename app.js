@@ -4,11 +4,22 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
+var dotenv = require('dotenv');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
 
+// Load environment variables from .env file
+dotenv.load();
+
 var app = express();
+
+mongoose.connect(process.env.MONGODB);
+mongoose.connection.on('error', function () {
+  console.log('MongoDB Connection Error. Please make sure that MongoDB is running.');
+  process.exit(1);
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -24,6 +35,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/login', index);
+app.use('/callback', index);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
