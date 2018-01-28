@@ -1,25 +1,48 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import { Header } from './components/Header'
-import { Utils } from './components/Utils'
+import { Home } from './components/Home'
 import Scroller from './components/Scroller'
-
+import { Utils } from './components/Utils'
 
 class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      authentication: false
+    }
+  }
+
+  componentWillMount(){
+    if (window.location.search){
+      let searchParams = new URLSearchParams(window.location.search.slice(1));
+      let token = searchParams.get('token');
+      localStorage.setItem('token', token);
+      window.location.href = window.location.href.split('?')[0];
+    }
+    if(localStorage.getItem('token')){
+      this.setState({authentication: true})
+    }
+  }
+
+  logOut(event) {
+    this.setState({ authentication: false })
+    window.localStorage.clear();
+  }
+
   render() {
     return (
       <div className="App">
-        {/* <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p> */}
-        <Header />
-        <Utils />
-        <Scroller />
+        <Header token={this.state.authentication} button={this.logOut.bind(this)}/>
+        {this.state.authentication ? (
+          <div>
+            <Utils />
+            <Scroller signout={this.logOut.bind(this)}/>
+          </div>
+        ):(
+          <Home />
+        )}
       </div>
     );
   }
