@@ -29,4 +29,8 @@
     display: flex;
     justify-content: space-between;
   }
+
+  &:last-child{
+    padding-right: 35px;
+  }
 }
