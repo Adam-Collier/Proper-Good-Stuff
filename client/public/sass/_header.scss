@@ -25,7 +25,44 @@
 
   p{
     display: inline-block;
-    padding-left: 15px;
+    padding-left: 18px;
     color: #FFFFFF;
+    font-size: 0.85rem;
+  }
+
+  form{
+    height: 28px;
+    display: inline-block;
+    line-height: 1;
+    padding-right: 6px;
+
+    input[type=submit]{
+      height: 100%;
+      padding: 0px 12px;
+      color: #FFFFFF;
+      font-size: 0.85rem;
+      font-weight: 300;
+      background-color: #a43e3e;
+      border: none;
+      border-radius: 0px 3px 3px 0px;
+      cursor: pointer;
+
+      &:focus{
+        outline: none;
+      }
+    }
+
+    input[type=text]{
+      width: 180px;
+      border: none;
+      border-radius: 3px 0px 0px 3px;
+      height: 100%;
+      padding: 0px 10px;
+      font-size: 0.8rem;
+
+      &:focus{
+        outline: none;
+      }
+    }
   }
 }
