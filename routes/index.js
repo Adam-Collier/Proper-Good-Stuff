@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var fetch = require('node-fetch');
 var jwt = require('jsonwebtoken');
+var cloudinary = require('cloudinary');
 
 var User = require('../models/User');
 
@@ -10,12 +11,15 @@ var User = require('../models/User');
 router.get('/api', function (req, res, next) {
   console.log(req.headers.jwt);
   jwt.verify(req.headers.jwt, process.env.JWT_SECRET, function (err, decoded) {
-    if(err) res.json({error: 'jwt expired'})
-    console.log(decoded) // bar
-    User.find({}, { _id: 0, team: 1, sites: 1}, function (err, users) {
-      users = users.reduce((acc, curr) => acc.concat(curr.sites), []);
-      res.send(users);
-    })
+    if(err) {
+      res.json({error: 'jwt expired'})
+    }else{
+      console.log(decoded) // bar
+      User.find({}, { _id: 0, team: 1, sites: 1 }, function (err, users) {
+        users = users.reduce((acc, curr) => acc.concat(curr.sites), []);
+        res.send(users);
+      })
+    }
   });
   // res.send([
     // {
@@ -78,7 +82,7 @@ router.get('/callback', (req, res) => {
     var token = jwt.sign({
       name: data.user.name,
       team: data.team.domain,
-    }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    }, process.env.JWT_SECRET, { expiresIn: '1d' });
 
     console.log(token);
 
@@ -94,6 +98,22 @@ router.get('/callback', (req, res) => {
     });
     res.redirect(`http://localhost:3000?token=${token}`)
   })
+});
+
+router.post('/api', (req, res) => {
+  console.log("I've been posted to bitch");
+  console.log(req.body);
+  cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_NAME,
+    api_key: process.env.CLOUDINARY_KEY,
+    api_secret: process.env.CLOUDINARY_SECRET
+  });
+  cloudinary.api.resources((result) => {
+    console.log(result.resources)
+  }, {
+      type: 'upload',
+      max_results: '500'
+    })
 })
 
 module.exports = router;
