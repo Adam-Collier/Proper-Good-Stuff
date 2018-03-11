@@ -130,4 +130,54 @@ router.post("/api", (req, res) => {
   });
 });
 
+router.post("/delete", (req, res) => {
+  console.log(req.body);
+  req.body.element === "site"
+    ? User.findOne({ slackId: req.body.id }, function(err, user) {
+        cloudinary.config({
+          cloud_name: process.env.CLOUDINARY_NAME,
+          api_key: process.env.CLOUDINARY_KEY,
+          api_secret: process.env.CLOUDINARY_SECRET
+        });
+        let public_id = req.body.image.slice(62, -4);
+        console.log("this is the id", public_id);
+        cloudinary.uploader.destroy(public_id, function(result) {
+          console.log(result);
+        });
+        user.sites.forEach((x, i) => {
+          console.log(x._id);
+          if (x._id == req.body.site) {
+            console.log("yahhhh removing something");
+            user.sites[i].remove();
+          }
+        });
+        user.save(function(err) {
+          if (err) console.log(err);
+          console.log("site removed successfully");
+        });
+        res.send("blah");
+      })
+    : User.findOne({ slackId: req.body.id })
+        .exec()
+        .then(user => {
+          user.sites.forEach((x, i) => {
+            console.log(x.img);
+            let public_id = x.img.slice(62, -4);
+            cloudinary.config({
+              cloud_name: process.env.CLOUDINARY_NAME,
+              api_key: process.env.CLOUDINARY_KEY,
+              api_secret: process.env.CLOUDINARY_SECRET
+            });
+            cloudinary.uploader.destroy(public_id, function(result) {
+              console.log(result);
+            });
+          });
+        })
+        .then(() => {
+          User.remove({ slackId: req.body.id }, function(err) {
+            res.send("logout");
+          });
+        });
+});
+
 module.exports = router;
