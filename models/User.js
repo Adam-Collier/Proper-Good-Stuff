@@ -13,6 +13,7 @@ var userSchema = new mongoose.Schema({
   name: String,
   email: String,
   team: String,
+  slackId: String,
   sites: [{
     website: String,
     url: String,
