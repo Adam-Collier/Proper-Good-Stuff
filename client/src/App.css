@@ -1,52 +1,42 @@
-@import url("https://fonts.googleapis.com/css?family=Palanquin:400,500,600");
-.App {
-  text-align: center; }
+@import url("https://fonts.googleapis.com/css?family=Palanquin:200,300,600");
+html {
+  font-size: 16px; }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px; }
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white; }
-
-.App-title {
-  font-size: 1.5em; }
-
-.App-intro {
-  font-size: large; }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg); }
-  to {
-    transform: rotate(360deg); } }
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-a,
-p,
-button {
+body {
+  font-family: 'Palanquin', serif;
+  line-height: 1.45;
   font-family: 'Palanquin', sans-serif; }
-  h1:focus,
-  h2:focus,
-  h3:focus,
-  h4:focus,
-  h5:focus,
-  h6:focus,
-  a:focus,
-  p:focus,
-  button:focus {
+  body:focus {
     outline: none; }
 
+h1, h2, h3, h4 {
+  margin: 1.414rem 0 0.3rem;
+  font-weight: 600;
+  line-height: 1.2; }
+
+h1 {
+  margin-top: 0;
+  font-size: 1.7rem; }
+
+h2 {
+  font-size: 1.953rem; }
+
+h3 {
+  font-size: 1.563rem; }
+
+h4 {
+  font-size: 1.25rem; }
+
 p {
+  font-size: 0.8rem;
   font-weight: 300; }
+
+a {
+  color: #D2D2D2;
+  font-size: 0.8rem;
+  font-weight: 300;
+  text-decoration: none;
+  letter-spacing: 0.4px; }
 
 .header {
   height: 55px;
@@ -56,33 +46,81 @@ p {
   justify-content: space-between;
   align-items: center;
   padding: 0px 40px; }
-  .header div {
+  .header div, .header a {
     display: flex;
     align-items: center;
-    display: block; }
-  .header svg {
-    margin-top: 4px;
+    cursor: pointer; }
+  .header svg:nth-child(1) {
+    margin-top: 0px;
     width: 220px; }
+  .header .slack-logo {
+    width: 30px;
+    height: 30px; }
   .header p {
     display: inline-block;
-    padding-left: 15px; }
+    padding-left: 18px;
+    color: #FFFFFF;
+    font-size: 0.85rem; }
+  .header form {
+    height: 28px;
+    display: inline-block;
+    line-height: 1;
+    padding-right: 6px; }
+    .header form input[type=submit] {
+      height: 100%;
+      padding: 0px 12px;
+      color: #FFFFFF;
+      font-size: 0.85rem;
+      font-weight: 300;
+      background-color: #a43e3e;
+      border: none;
+      border-radius: 0px 3px 3px 0px;
+      cursor: pointer; }
+      .header form input[type=submit]:focus {
+        outline: none; }
+    .header form input[type=text] {
+      width: 160px;
+      border: none;
+      height: 100%;
+      padding: 0px 10px;
+      font-size: 0.8rem; }
+      .header form input[type=text]:focus {
+        outline: none; }
+      .header form input[type=text]:nth-child(1) {
+        border-radius: 3px 0px 0px 3px;
+        border-right: 1px #eeeeee solid; }
+
+.profile .account {
+  display: block;
+  margin: 0 auto;
+  width: 600px;
+  margin-bottom: 80px; }
+  .profile .account button {
+    background: #fb4141;
+    color: #ffffff;
+    border: none;
+    border-radius: 3px;
+    padding: 12px 14px;
+    font-size: 16px; }
 
 .utils {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 20px 40px 50px 35px; }
+  align-items: center;
+  padding: 10px 40px 0px 35px;
+  height: 50.797px; }
 
 .search {
   position: relative; }
   .search input {
     display: block;
     padding-left: 34px;
-    height: 29px;
+    height: 24px;
     width: 150px;
     border-radius: 30px;
-    border: 1px solid #E5E5E5;
-    background: #F0F0F0;
+    border: 1px solid #e5e5e5;
+    background: #f0f0f0;
     font-size: 13px; }
     .search input:focus {
       outline: none; }
@@ -91,5 +129,120 @@ p {
     top: 50%;
     transform: translateY(-50%);
     left: 8px;
-    width: 20px;
-    height: 20px; }
+    width: 16px;
+    height: 16px; }
+
+.nav h1 {
+  display: inline-block;
+  margin-right: 30px;
+  cursor: pointer;
+  color: #e9e9e9; }
+
+.nav .active {
+  color: #2c2c2c; }
+
+.scroller {
+  width: calc(100vw - 35px);
+  height: calc(100vh - 128px);
+  overflow-x: auto;
+  overflow-y: visible;
+  -webkit-overflow-scrolling: touch;
+  white-space: nowrap;
+  padding-left: 35px; }
+
+.scroller > div:nth-of-type(1) {
+  animation-delay: 0.1s; }
+
+.scroller > div:nth-of-type(2) {
+  animation-delay: 0.2s; }
+
+.scroller > div:nth-of-type(3) {
+  animation-delay: 0.3s; }
+
+.scroller > div:nth-of-type(4) {
+  animation-delay: 0.4s; }
+
+.site {
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 50px;
+  width: 52%;
+  opacity: 0;
+  animation: bounceIn 400ms cubic-bezier(0.215, 0.61, 0.355, 1) forwards; }
+  .site img {
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+    display: block; }
+  .site a {
+    display: block;
+    margin-bottom: 15px;
+    padding-left: 2px; }
+  .site div {
+    position: relative;
+    display: flex;
+    justify-content: space-between; }
+  .site:last-child {
+    padding-right: 35px; }
+  .site svg {
+    position: absolute;
+    bottom: -38%;
+    left: 50%;
+    width: 35px;
+    transform: translate(-50%, -50%);
+    cursor: pointer; }
+
+@keyframes bounceIn {
+  from,
+  20%,
+  40%,
+  60%,
+  80%,
+  to {
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
+  0% {
+    opacity: 0;
+    -webkit-transform: scale3d(0.9, 0.9, 0.9);
+    transform: scale3d(0.9, 0.9, 0.9); }
+  60% {
+    -webkit-transform: scale3d(1.01, 1.01, 1.01);
+    transform: scale3d(1.01, 1.01, 1.01); }
+  to {
+    opacity: 1;
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1); } }
+
+.loader {
+  height: calc(100%);
+  width: 100%;
+  flex-direction: column;
+  background: #ffffff;
+  position: fixed;
+  top: 55px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #2c2c2c;
+  text-align: center; }
+  .loader h1 {
+    margin-bottom: 2rem; }
+  .loader div {
+    margin-top: -70px;
+    width: 35%;
+    max-width: 600px; }
+  .loader svg {
+    width: 100%;
+    animation: float 1500ms ease-in-out infinite; }
+
+@keyframes float {
+  0% {
+    transform: translateY(0px); }
+  50% {
+    transform: translateY(-8px); }
+  100% {
+    transform: translateY(0px); } }
