@@ -8,13 +8,22 @@
     "dev": "concurrently \"cd client && npm start\" \"npm run nodemon\""
   },
   "dependencies": {
+    "axios": "^0.17.1",
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "~1.18.2",
+    "cloudinary": "^1.9.1",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
+    "dotenv": "^4.0.0",
     "express": "~4.15.5",
     "jade": "~1.11.0",
+    "jsonwebtoken": "^8.1.1",
+    "mongoose": "^4.12.4",
     "morgan": "~1.9.0",
+    "node-fetch": "^1.7.3",
     "puppeteer": "^1.0.0",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
     "serve-favicon": "~2.4.5"
   },
   "devDependencies": {
