@@ -1,34 +1,49 @@
-.utils{
+.utils {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 20px 40px 25px 35px;
+  align-items: center;
+  padding: 10px 40px 0px 35px;
+  height: 50.797px;
 }
 
-.search{
+.search {
   position: relative;
 
-  input{
+  input {
     display: block;
     padding-left: 34px;
     height: 24px;
     width: 150px;
     border-radius: 30px;
-    border: 1px solid #E5E5E5;
-    background: #F0F0F0;
+    border: 1px solid #e5e5e5;
+    background: #f0f0f0;
     font-size: 13px;
 
-    &:focus{
+    &:focus {
       outline: none;
     }
   }
 
-  svg{
+  svg {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     left: 8px;
     width: 16px;
     height: 16px;
+  }
+}
+
+.nav {
+  h1 {
+    display: inline-block;
+    margin-right: 30px;
+    cursor: pointer;
+    color: rgb(233, 233, 233);
+  }
+
+  .active {
+    color: #2c2c2c;
   }
 }
