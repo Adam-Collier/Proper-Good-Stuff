@@ -91,13 +91,17 @@ class App extends Component {
           loader={() => this.setState(prev => ({ active: !prev.active }))}
         />
         <Loader active={this.state.active} />
-        <Utils
-          onTextChange={text => {
-            this.setState({ searchString: text });
-            console.log(text);
-          }}
-          switchView={this.switchView.bind(this)}
-        />
+        {console.log(this.props)}
+        {this.state.authentication === false ? null : (
+          <Utils
+            onTextChange={text => {
+              this.setState({ searchString: text });
+              console.log(text);
+            }}
+            switchView={this.switchView.bind(this)}
+          />
+        )}
+
         <Switch>
           <Route
             exact
