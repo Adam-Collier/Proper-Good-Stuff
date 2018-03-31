@@ -69,7 +69,7 @@ router.get("/callback", (req, res) => {
         if (err) console.log(err);
         console.log("user saved 'apparently'");
       });
-      res.redirect(`http://localhost:3000?token=${token}`);
+      res.redirect(`/?token=${token}`);
     });
 });
 
