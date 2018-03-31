@@ -21,7 +21,6 @@ router.get("/api", function(req, res, next) {
     } else {
       console.log(decoded); // bar
       User.find({ team: decoded.team }, function(err, users) {
-        console.log("these are the users", users);
         users = users.reduce((acc, curr) => acc.concat(curr.sites), []);
         res.header({
           user: decoded.name,
