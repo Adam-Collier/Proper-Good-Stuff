@@ -15,7 +15,14 @@ dotenv.load();
 
 var app = express();
 
-mongoose.connect(process.env.MONGODBLAB);
+// mongoose.connect(process.env.MONGODBLAB);
+mongoose.Promise = global.Promise;
+mongoose.connect(process.env.MONGODBLAB, {
+  keepAlive: true,
+  reconnectTries: Number.MAX_VALUE,
+  useMongoClient: true
+});
+
 mongoose.connection.on("error", function() {
   console.log(
     "MongoDB Connection Error. Please make sure that MongoDB is running."
