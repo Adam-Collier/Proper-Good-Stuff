@@ -7,6 +7,10 @@ var puppeteer = require("puppeteer");
 
 var User = require("../models/User");
 
+router.get("/", function(req, res) {
+  res.sendFile(path.join(__dirname, "client/build", "index.html"));
+});
+
 /* GET first API page */
 // Routes are based on the route set for the file
 router.get("/api", function(req, res, next) {
