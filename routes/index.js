@@ -91,7 +91,9 @@ router.post("/api", (req, res) => {
         });
 
         (async () => {
-          const browser = await puppeteer.launch();
+          const browser = await puppeteer.launch({
+            args: ["--no-sandbox", "--disable-setuid-sandbox"]
+          });
 
           async function timeout(ms) {
             return new Promise(resolve => setTimeout(resolve, ms));
