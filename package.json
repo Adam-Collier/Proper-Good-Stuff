@@ -5,7 +5,9 @@
   "scripts": {
     "start": "node ./bin/www",
     "nodemon": "nodemon ./bin/www",
-    "dev": "concurrently \"cd client && npm start\" \"npm run nodemon\""
+    "dev": "concurrently \"cd client && npm start\" \"npm run nodemon\"",
+    "heroku-postbuild":
+      "cd client && npm install --only=dev && npm install && npm run build"
   },
   "dependencies": {
     "axios": "^0.17.1",

@@ -7,6 +7,10 @@ var puppeteer = require("puppeteer");
 
 var User = require("../models/User");
 
+router.get("/", function(req, res) {
+  res.sendFile(path.join(__dirname, "client/build", "index.html"));
+});
+
 /* GET first API page */
 // Routes are based on the route set for the file
 router.get("/api", function(req, res, next) {
@@ -17,7 +21,6 @@ router.get("/api", function(req, res, next) {
     } else {
       console.log(decoded); // bar
       User.find({ team: decoded.team }, function(err, users) {
-        console.log("these are the users", users);
         users = users.reduce((acc, curr) => acc.concat(curr.sites), []);
         res.header({
           user: decoded.name,
@@ -88,7 +91,9 @@ router.post("/api", (req, res) => {
         });
 
         (async () => {
-          const browser = await puppeteer.launch();
+          const browser = await puppeteer.launch({
+            args: ["--no-sandbox", "--disable-setuid-sandbox"]
+          });
 
           async function timeout(ms) {
             return new Promise(resolve => setTimeout(resolve, ms));
