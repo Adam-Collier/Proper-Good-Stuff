@@ -1,53 +1,53 @@
-.scroller{
+.scroller {
   width: calc(100vw - 35px);
   height: calc(100vh - 128px);
   overflow-x: auto;
   overflow-y: visible;
   -webkit-overflow-scrolling: touch;
-  white-space:nowrap;
+  white-space: nowrap;
   padding-left: 35px;
 }
 
 @for $i from 1 to 5 {
   .scroller > div:nth-of-type(#{$i}) {
-    animation-delay: $i * 0.1s; 
+    animation-delay: $i * 0.1s;
   }
 }
 
-.site{
+.site {
   // display: inline;
   display: inline-block;
-  vertical-align:top;
+  vertical-align: top;
   margin-right: 50px;
-  width: 52%;
+  // width: 52%;
+  height: 62vh;
   opacity: 0;
   animation: bounceIn 400ms cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
 
-
-  img{
-    width: 100%;
+  img {
+    height: 100%;
     border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0,0,0,0.15);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
     display: block;
   }
 
-  a{
+  a {
     display: block;
     margin-bottom: 15px;
     padding-left: 2px;
   }
 
-  div{
+  div {
     position: relative;
     display: flex;
     justify-content: space-between;
   }
 
-  &:last-child{
+  &:last-child {
     padding-right: 35px;
   }
 
-  svg{
+  svg {
     position: absolute;
     bottom: -38%;
     left: 50%;
