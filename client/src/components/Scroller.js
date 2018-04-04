@@ -1,30 +1,28 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 export default class Scroller extends Component {
-
   getSites() {
-    console.log(this.props.fData);
-      return this.props.fData.map((x, i) => {
-        console.log(x)
+    // console.log(this.props.fData);
+    console.log(this.props.deviceSwitch);
+    return this.props.fData
+      .map((x, i) => {
+        console.log(x);
         return (
           <div className="site" key={i}>
             <h2>{x.website}</h2>
             <a href={x.url}>{x.url}</a>
-            <img src={x.img} alt="" />
+            <img src={x[this.props.deviceSwitch]} alt="" />
             <div>
               <p>{x.date}</p>
               <p>Added by {x.addedBy}</p>
             </div>
           </div>
-        )
-      }).reverse()
-    }
+        );
+      })
+      .reverse();
+  }
 
   render() {
-    return (
-      <div className="scroller">
-        {this.getSites()}
-      </div>
-    )
+    return <div className="scroller">{this.getSites()}</div>;
   }
 }
