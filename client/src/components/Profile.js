@@ -12,7 +12,7 @@ export default class Profile extends Component {
     this.props.initialSwitch(true);
   }
 
-  deleteThis = (id, el, img, e) => {
+  deleteThis = (id, el, img, mob, e) => {
     fetch("/delete", {
       method: "post",
       headers: {
@@ -22,7 +22,8 @@ export default class Profile extends Component {
         id: this.props.id,
         site: id,
         element: el,
-        image: img
+        image: img,
+        mobile: mob
       })
     })
       .then(response => {
@@ -45,12 +46,14 @@ export default class Profile extends Component {
           <div className="site" key={i} data-id={x._id}>
             <h2>{x.website}</h2>
             <a href={x.url}>{x.url}</a>
-            <img src={x.img} alt="" />
+            <img src={x.desktop} alt="" />
             <div>
               <p>{x.date}</p>
               <p>Added by {x.addedBy}</p>
               <svg
-                onClick={e => this.deleteThis(x._id, "site", x.img, e)}
+                onClick={e =>
+                  this.deleteThis(x._id, "site", x.img, x.mobile, e)
+                }
                 fill="red"
                 version="1.1"
                 viewBox="0 0 100 100"
