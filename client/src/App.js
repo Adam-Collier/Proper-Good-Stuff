@@ -24,7 +24,8 @@ class App extends Component {
       id: "",
       active: false,
       searchString: "",
-      isYourSite: true
+      isYourSite: true,
+      device: "desktop"
     };
   }
 
@@ -75,6 +76,13 @@ class App extends Component {
     window.localStorage.clear();
   }
 
+  deviceSwitch = device => {
+    console.log("switching bruv");
+    device === "desktop"
+      ? this.setState({ device: "mobile" })
+      : this.setState({ device: "desktop" });
+  };
+
   render() {
     let searchContent = this.state.data.filter(sites => {
       console.log(sites.website);
@@ -98,7 +106,9 @@ class App extends Component {
               this.setState({ searchString: text });
               console.log(text);
             }}
+            device={this.state.device}
             switchView={this.switchView.bind(this)}
+            deviceSwitch={this.deviceSwitch.bind(this)}
           />
         )}
 
@@ -110,6 +120,7 @@ class App extends Component {
               return this.state.authentication ? (
                 <div>
                   <Scroller
+                    deviceSwitch={this.state.device}
                     signout={this.logOut.bind(this)}
                     fData={searchContent}
                   />
