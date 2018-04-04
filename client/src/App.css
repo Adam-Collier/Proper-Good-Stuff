@@ -133,9 +133,9 @@ a {
     height: 16px; }
 
 .device-switch {
-  width: 130px;
-  padding: 10px 40px 0 0;
-  fill: grey;
+  width: 120px;
+  padding: 12px 40px 0 0;
+  fill: #2c2c2c;
   cursor: pointer; }
 
 .nav h1 {

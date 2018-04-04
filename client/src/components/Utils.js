@@ -49,54 +49,26 @@ const DeviceSwitch = props => {
   return (
     <div>
       <svg
-        onClick={handleClick}
         className="device-switch"
-        viewBox="0 0 260 182"
+        onClick={handleClick}
+        viewBox="0 0 218 98"
         xmlns="http://www.w3.org/2000/svg"
-        xmlnsXlink="http://www.w3.org/1999/xlink"
         fillRule="evenodd"
         clipRule="evenodd"
         strokeLinejoin="round"
         strokeMiterlimit="1.414"
       >
-        <clippath id="_clip1">
-          <rect x="157.093" y="40.812" width="102.04" height="102.04" />
-        </clippath>
-        <g clipPath="url(#_clip1)">
-          <clippath id="_clip2">
-            <rect x="157" y="40" width="103" height="103" />
-          </clippath>
-          <g clipPath="url(#_clip2)">
-            <use
-              xlinkHref="#_Image3"
-              x="157.093"
-              y="40.812"
-              width="102.04"
-              height="102.04"
-            />
-          </g>
-        </g>
-        <clippath id="_clip4">
-          <rect width="181.961" height="181.961" />
-        </clippath>
-        <g clipPath="url(#_clip4)">
-          <use xlinkHref="#_Image5" width="182" height="182" />
-        </g>
-        <defs>
-          <image
-            id="_Image3"
-            width="103"
-            height="103"
-            xlinkHref="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGcAAABnCAYAAAAdQVz5AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAD3klEQVR4nO3dTWtcVRjA8V8m5oXUahPSUltCi9CFVlAQBamC1IUrd1UEdwW3fhC3foMq6KqgUuxKQfFlJ4hCURCqCdS3xpi+mNhmXJwZojFjae5kzjOT5w9nMXPhnOfe/z3nOXcuzEOSJEmSJHuesdoBDJBZHMW9PY5fwyJ+H1hEd+Ce2gFsYQzzuB+tPvd9BA9jrsfx3/AZVnG7z2PviCgz5yBexinlIk7pf2xTyqyZ6HF8HVfxIz7Be/i+zzEMHY/jHC7jJjbQrtjWFEHv4PQunnd45vEWVtSXsrWt4k2c3LWzvwPjtQbucBavKJKiLLFdJnFY2SB8odw8A6XfSfduOS2mmC7zeASHagxeU84BLCiJOiotRcxCjcFrbqXvw7Rms2YRn+OnHsdn8RQebDDGjBLrwKkpZ1zz5WwGx5RZuB37sL/hGC2VVphoD6F3ywE8qneybhnic6wV+GEl0c407Kclds5qRK0NwSE8pOScpAe15Ewqs6b2Vj40eXECUyvnXMPPuNX5vIQr+KtSPFtp4QGVnm+61JKzhC9xvfP5I5zHcqV4tjKJM3i1ZhC15PyJP2y+N7mMT5XZFIFp5dfyqtTKOQt4Qu+3kol6cuZwXFk+kh7kbi0wKScwteRcwTfKa+mkBzXlfC3l/C+15NxSttMDf/U7TGTOCUzKCUzKCUzKCUzKCUzKCUzKCUzKCUzKCUzKCUzKCUzKCUzKCUzKCUzKCUzKCUzKCUzKCUzKCUzKCUzKCUzKCUzKCUzKCUzKCUzKCUzKCUzKCUzKCUzKCUzKCUzKCUzKCUzKCUzKCUzKCUzKCUzKCUzKCUzKCUzKCUzKCUzKCUzKCUzKCUzKCUzKCUzKCUzKCUzKCUzKCUzKCUyUklktpYZb7bqlXfpRT64xUeScwPNKpd0ITCiVsaoSRc6ZTkv+wajlnG5d6ZEgysxpShtX8a1yw51QCrhWzxtNGIWZs4FzeAanlIq6T+NtQ/53/KMg5wLewCWby9olvI4PK8bVmFGQ8zG+8+9c08ZXhryYxSjIWcaNbb5vK1vz69scGwpqylm2WYqyCceVMmNbmcIRZWPQhBtYbdjHjqgpZwWLWG/Yz0t40n/P5QVlk9D0V4df8EPDPnZE7Z9LjuEx7GvQx6xSOXG/soQdxVm8pjzlN7kBV3ER79uDtX7m8AHWbO60dtJuK8vPSqfd7HzXpM823sXJXTv74IwpM+eCcnGbXsx+tXVlxjyr4uoS4Ql6XFmaXsRziqyDBn9RNvCrUujvonLDLKlYLzuCHEoc08oOa0K9jcqGzXpya/ZgnkmSJEmSJBh/A10iBKZda+npAAAAAElFTkSuQmCC"
-          >
-            <image
-              id="_Image5"
-              width="182"
-              height="182"
-              xlinkHref="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALYAAAC2CAYAAAB08HcEAAAACXBIWXMAAA7EAAAOxAGVKw4bAAADVElEQVR4nO3ZvY9lcxjA8e+uJUEoNN7iJVFIJDaiZ4VCFOsfUGpVIkSpkRCF/0GJRrIkCgoNhZBsNCSEeEtQIUKwiqHc2bU5c86dZz6f5Klu5vyeufOdO+feKQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAjq5jG5x5vHqouqe6ubpqgx04eL9WX1cfVe9W57Zd52CdrL5o75s0R2c+re5sqJPVj23/JJtt5rtWjHutW5Fj1WfVHSudx246294L3IE7vsYh1X0d7aj/rB6uHq3+3niXLd1d3bvGQWuFff9K5+yqb6q3qzPVDxvvsrVTaxxyYo1DqqtXOmdX3Va9UV1RXb/xLltbpYW1wqZOb73AUbLWrQisahdesV+qPth6CRZ1qnpiywV2Iez3q9e3XoJFbf7fZLcijCRsRhI2IwmbkYTNSMJmJGEzkrAZSdiMJGxGEjYjCZuRhM1IwmYkYTOSsBlJ2IwkbEYSNiMJm5GEzUjCZiRhM5KwGUnYjCRsRhI2IwmbkYTNSMJmJGEzkrAZSdiMJGxGEjYjCZuRhM1IwmYkYTOSsBlJ2IwkbEYSNiMJm5GEzUjCZiRhM5KwGUnYjCRsRhI2IwmbkYTNSMJmJGEzkrAZSdiMJGxGEjYjCZuRhM1IwmYkYTOSsBlJ2IwkbEYSNiMJm5GEzUjHFrrOM9U9+zx+srrrPI/9VP220B7shquq687z2Nnqk32+9oPq5cU3ukRvVeeMWWBebwEnlrjIEfFH9dfGO5yoLt94h0NB2Bfvuer5jXd4vnp24x0OBWFfvAfaPuwHNj5/P39WH3fhv2o3Vbcc/DrLONP292ZrzINLPWGX4PQ+e+3CPHWR38eJ9j4wON91Xv1fz8o+hyzhq4Wus+vOVE9Wr1S/rHTmtdXj1QsrnXepHqt+7cKv2Ld2/k9Mqr5cYpmlPu57pHpzoWsdBueqz/+dcwd0xvHqjur2lvs5HQb3V+9tvcR/Lq/eafs/h+Zwz5l28J+GV+bzbHPp81p1RQu5bKkLtfeu+NXq5+r6fwcu5MPqxerp9hpaxEHeu11T3Vjd0IK/iYzwe/V99W17bzgBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADoV/AKTZUh8oy+1mAAAAAElFTkSuQmCC"
-            />
-          </image>
-        </defs>
+        <rect x="206.595" y="25.628" width="6.483" height=".577" />
+        <rect x="183.671" y="34.078" width=".577" height="3.479" />
+        <rect x="183.671" y="39.31" width=".577" height="3.479" />
+        <path
+          d="M213.111,26.496l-23.874,0c-2.59,0 -4.698,2.108 -4.698,4.698l0,61.842c0,2.591 2.108,4.699 4.698,4.699l23.874,0c2.591,0 4.699,-2.108 4.699,-4.699l0,-61.842c0,-2.589 -2.109,-4.698 -4.699,-4.698ZM197.933,31.751l6.482,0l0,0.58l-6.482,0l0,-0.58ZM201.14,95.309c-1.601,0 -2.899,-1.298 -2.899,-2.899c0,-1.602 1.298,-2.9 2.899,-2.9c1.601,0 2.899,1.298 2.899,2.9c0,1.601 -1.298,2.899 -2.899,2.899ZM215.778,87.151l-29.208,0l0,-49.593l29.208,0l0,49.593Z"
+          fillRule="nonzero"
+        />
+        <path
+          d="M158.665,91.327l0,-5.27l-8.816,0l0,-80.181c0,0 0,-5.876 -6.816,-5.876l-127.389,0c-6.816,0 -6.816,5.876 -6.816,5.876l0,80.181l-8.812,0l0,5.27c0,0 -0.739,6.481 7.942,6.481c0.658,0 141.879,0 142.751,0c8.679,0 7.956,-6.481 7.956,-6.481ZM79.34,3.943c0.727,0 1.315,0.589 1.315,1.316c0,0.727 -0.588,1.318 -1.315,1.318c-0.728,0 -1.318,-0.591 -1.318,-1.318c0,-0.727 0.59,-1.316 1.318,-1.316ZM16.204,9.609l126.271,0l0,76.193l-126.271,0l0,-76.193ZM91.964,93.517l-25.251,0c-4.34,0 -5.139,-2.926 -5.233,-4.648l35.717,0c-0.094,1.722 -0.893,4.648 -5.233,4.648ZM149.614,92.786l-9.709,0c-0.54,0 -0.979,-0.44 -0.979,-0.979c0,-0.542 0.439,-0.979 0.979,-0.979l9.709,0c0.541,0 0.98,0.437 0.98,0.979c0,0.539 -0.439,0.979 -0.98,0.979Z"
+          fillRule="nonzero"
+        />
       </svg>
     </div>
   );
