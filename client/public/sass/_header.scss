@@ -1,45 +1,46 @@
-.header{
+.header {
   height: 55px;
-  color: #FFFFFF;
-  background: #2C2C2C;
+  color: #ffffff;
+  background: #2c2c2c;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0px 40px;
 
-  div, a{
+  div,
+  a {
     display: flex;
     align-items: center;
     cursor: pointer;
   }
 
-  svg:nth-child(1){
+  svg:nth-child(1) {
     margin-top: 0px;
-    width: 220px;
+    width: 130px;
   }
 
-  .slack-logo{
+  .slack-logo {
     width: 30px;
     height: 30px;
   }
 
-  p{
+  p {
     display: inline-block;
     padding-left: 18px;
-    color: #FFFFFF;
+    color: #ffffff;
     font-size: 0.85rem;
   }
 
-  form{
+  form {
     height: 28px;
     display: inline-block;
     line-height: 1;
     padding-right: 6px;
 
-    input[type=submit]{
+    input[type="submit"] {
       height: 100%;
       padding: 0px 12px;
-      color: #FFFFFF;
+      color: #ffffff;
       font-size: 0.85rem;
       font-weight: 300;
       background-color: #a43e3e;
@@ -47,23 +48,23 @@
       border-radius: 0px 3px 3px 0px;
       cursor: pointer;
 
-      &:focus{
+      &:focus {
         outline: none;
       }
     }
 
-    input[type=text]{
+    input[type="text"] {
       width: 160px;
       border: none;
       height: 100%;
       padding: 0px 10px;
       font-size: 0.8rem;
 
-      &:focus{
+      &:focus {
         outline: none;
       }
 
-      &:nth-child(1){
+      &:nth-child(1) {
         border-radius: 3px 0px 0px 3px;
         border-right: 1px rgb(238, 238, 238) solid;
       }
