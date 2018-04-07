@@ -61,17 +61,23 @@ router.get("/callback", (req, res) => {
         { expiresIn: "7d" }
       );
 
-      var newUser = new User({
-        name: data.user.name,
-        email: data.user.email,
-        team: data.team.domain,
-        slackId: data.user.id,
-        sites: []
-      });
-      newUser.save(function(err) {
-        if (err) console.log(err);
-        console.log(process.env.NODE_ENV);
-        console.log("user saved 'apparently'");
+      User.findOne({ email: data.user.email }, function(err, user) {
+        console.log(user);
+        console.log(!user);
+        if (!user) {
+          var newUser = new User({
+            name: data.user.name,
+            email: data.user.email,
+            team: data.team.domain,
+            slackId: data.user.id,
+            sites: []
+          });
+          newUser.save(function(err) {
+            if (err) console.log(err);
+            console.log(process.env.NODE_ENV);
+            console.log("user saved 'apparently'");
+          });
+        }
       });
 
       process.env.NODE_ENV === "production"
