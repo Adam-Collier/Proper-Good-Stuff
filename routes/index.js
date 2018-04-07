@@ -70,9 +70,13 @@ router.get("/callback", (req, res) => {
       });
       newUser.save(function(err) {
         if (err) console.log(err);
+        console.log(process.env.NODE_ENV);
         console.log("user saved 'apparently'");
       });
-      res.redirect(`/?token=${token}`);
+
+      process.env.NODE_ENV === "production"
+        ? res.redirect(`/?token=${token}`)
+        : res.redirect(`http://localhost:3000/?token=${token}`);
     });
 });
 
@@ -90,6 +94,8 @@ router.post("/api", (req, res) => {
           api_secret: process.env.CLOUDINARY_SECRET
         });
 
+        let saveSite = [];
+
         (async () => {
           const browser = await puppeteer.launch({
             args: ["--no-sandbox", "--disable-setuid-sandbox"]
@@ -101,33 +107,62 @@ router.post("/api", (req, res) => {
           const page = await browser.newPage();
 
           await page.goto(req.body.website);
+
+          // desktop
           await page.setViewport({ width: 1440, height: 850 });
           await timeout(7000);
-
-          // console.log(await page.content());
           await page.screenshot({ type: "jpeg" }).then(data => {
             cloudinary.uploader.upload(
               `data:image/jpeg;base64,${data.toString("base64")}`,
               function(result) {
                 console.log(result);
-                user.sites.push({
+                saveSite.push({
                   website: req.body.title,
                   url: req.body.website,
-                  img: result.secure_url,
+                  desktop: result.secure_url,
                   addedBy: decoded.name,
                   date: new Date().toLocaleDateString()
                 });
-
-                user.save(function(err) {
-                  if (err) return console.log(err);
-                  else {
-                    console.log("success!!!");
-                    res.json({ finished: "yeah boyy" });
-                  }
-                });
+                return;
               }
             );
           });
+
+          // mobile
+          await page.emulate({
+            name: "iPhone 6",
+            userAgent:
+              "Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1",
+            viewport: {
+              width: 375,
+              height: 550,
+              deviceScaleFactor: 2,
+              isMobile: true,
+              hasTouch: true,
+              isLandscape: false
+            }
+          });
+          await page
+            .screenshot({
+              type: "jpeg"
+            })
+            .then(data => {
+              cloudinary.uploader.upload(
+                `data:image/jpeg;base64,${data.toString("base64")}`,
+                result => {
+                  saveSite[0].mobile = result.secure_url;
+                  user.sites.push(saveSite[0]);
+                  user.save(function(err) {
+                    if (err) return console.log(err);
+                    else {
+                      console.log("success!!!");
+                      res.json({ finished: "yeah boyy" });
+                    }
+                  });
+                  return;
+                }
+              );
+            });
           await browser.close().then(() => {});
         })();
       });
@@ -166,8 +201,8 @@ router.post("/delete", (req, res) => {
         .exec()
         .then(user => {
           user.sites.forEach((x, i) => {
-            console.log(x.img);
-            let public_id = x.img.slice(62, -4);
+            console.log(x.desktop);
+            let public_id = x.desktop.slice(62, -4);
             cloudinary.config({
               cloud_name: process.env.CLOUDINARY_NAME,
               api_key: process.env.CLOUDINARY_KEY,
