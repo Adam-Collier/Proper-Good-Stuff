@@ -6,8 +6,7 @@
     "start": "node ./bin/www",
     "nodemon": "nodemon ./bin/www",
     "dev": "concurrently \"cd client && npm start\" \"npm run nodemon\"",
-    "heroku-postbuild":
-      "cd client && npm install --only=dev && npm install && npm run build"
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
   },
   "dependencies": {
     "axios": "^0.17.1",
@@ -24,6 +23,7 @@
     "morgan": "~1.9.0",
     "node-fetch": "^1.7.3",
     "puppeteer": "^1.0.0",
+    "react-responsive": "^4.1.0",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "serve-favicon": "~2.4.5"
