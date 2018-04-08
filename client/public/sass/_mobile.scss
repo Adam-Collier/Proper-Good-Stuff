@@ -1,0 +1,43 @@
+@media (max-width: 767px) {
+  h2 {
+    margin: 0rem 0 0.3rem;
+  }
+  .device-switch {
+    display: none;
+  }
+
+  .header form {
+    display: none;
+  }
+
+  .utils,
+  .header {
+    padding: 0px 20px;
+  }
+
+  .header {
+    margin-bottom: 8px;
+  }
+
+  .header svg:nth-child(1) {
+    width: 45%;
+  }
+
+  .search {
+    width: 30%;
+
+    input {
+      width: 100%;
+    }
+  }
+
+  .nav h1 {
+    font-size: 1.05rem;
+    margin-right: 0px;
+    margin-left: 15px;
+  }
+
+  .scroller {
+    padding-left: 20px;
+  }
+}
