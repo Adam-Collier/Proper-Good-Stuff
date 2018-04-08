@@ -139,6 +139,7 @@ class App extends Component {
                     user={this.state.user}
                     id={this.state.id}
                     initialSwitch={this.switchView}
+                    deviceSwitch="desktop"
                   />
                 </div>
               )}
