@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import Utils from "./Utils";
-import { browserHistory } from "react-router";
 
 export default class Profile extends Component {
   constructor(props) {
@@ -46,13 +44,13 @@ export default class Profile extends Component {
           <div className="site" key={i} data-id={x._id}>
             <h2>{x.website}</h2>
             <a href={x.url}>{x.url}</a>
-            <img src={x.desktop} alt="" />
+            <img src={x[this.props.deviceSwitch]} alt="" />
             <div>
               <p>{x.date}</p>
               <p>Added by {x.addedBy}</p>
               <svg
                 onClick={e =>
-                  this.deleteThis(x._id, "site", x.img, x.mobile, e)
+                  this.deleteThis(x._id, "site", x.desktop, x.mobile, e)
                 }
                 fill="red"
                 version="1.1"
