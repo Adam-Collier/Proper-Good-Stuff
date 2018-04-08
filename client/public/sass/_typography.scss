@@ -1,21 +1,24 @@
-@import url('https://fonts.googleapis.com/css?family=Palanquin:200,300,600');
+@import url("https://fonts.googleapis.com/css?family=Palanquin:200,300,600");
 
 html {
   font-size: 16px;
 }
 
 body {
-  font-family: 'Palanquin', serif;
+  font-family: "Palanquin", serif;
   line-height: 1.45;
-  font-family: 'Palanquin', sans-serif;
+  font-family: "Palanquin", sans-serif;
 
-  &:focus{
+  &:focus {
     outline: none;
   }
 }
 
-h1, h2, h3, h4 {
-  margin: 1.414rem 0 0.3rem;
+h1,
+h2,
+h3,
+h4 {
+  margin: 0.614rem 0 0.3rem;
   font-weight: 600;
   line-height: 1.2;
 }
@@ -37,13 +40,13 @@ h4 {
   font-size: 1.25rem;
 }
 
-p{
+p {
   font-size: 0.8rem;
   font-weight: 300;
 }
 
-a{
-  color: #D2D2D2;
+a {
+  color: #d2d2d2;
   font-size: 0.8rem;
   font-weight: 300;
   text-decoration: none;
