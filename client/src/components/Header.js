@@ -1,6 +1,6 @@
 import React from "react";
 import Form from "./Form";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const Header = props => {
   console.log(props);
