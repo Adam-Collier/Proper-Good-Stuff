@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import MediaQuery from "react-responsive";
+
 // import logo from './logo.svg';
 import "./App.css";
 import { Header } from "./components/Header";
@@ -7,12 +9,7 @@ import Profile from "./components/Profile";
 import Scroller from "./components/Scroller";
 import Utils from "./components/Utils";
 import Loader from "./components/Loader";
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  withRouter
-} from "react-router-dom";
+import { Route, Switch, withRouter } from "react-router-dom";
 
 class App extends Component {
   constructor(props) {
@@ -92,61 +89,119 @@ class App extends Component {
     });
     return (
       <div className="App">
-        <Header
-          token={this.state.authentication}
-          button={this.logOut.bind(this)}
-          fData={this.fetchData.bind(this)}
-          loader={() => this.setState(prev => ({ active: !prev.active }))}
-        />
-        <Loader active={this.state.active} />
-        {console.log(this.props)}
-        {this.state.authentication === false ? null : (
-          <Utils
-            onTextChange={text => {
-              this.setState({ searchString: text });
-              console.log(text);
-            }}
-            device={this.state.device}
-            switchView={this.switchView.bind(this)}
-            deviceSwitch={this.deviceSwitch.bind(this)}
+        <MediaQuery query="(min-width: 768px)">
+          {console.log("this is desktop width")}
+          <Header
+            token={this.state.authentication}
+            button={this.logOut.bind(this)}
+            fData={this.fetchData.bind(this)}
+            loader={() => this.setState(prev => ({ active: !prev.active }))}
           />
-        )}
-
-        <Switch>
-          <Route
-            exact
-            path="/"
-            render={() => {
-              return this.state.authentication ? (
+          <Loader active={this.state.active} />
+          {this.state.authentication === false ? null : (
+            <Utils
+              onTextChange={text => {
+                this.setState({ searchString: text });
+                console.log(text);
+              }}
+              device={this.state.device}
+              switchView={this.switchView.bind(this)}
+              deviceSwitch={this.deviceSwitch.bind(this)}
+            />
+          )}
+          <Switch>
+            <Route
+              exact
+              path="/"
+              render={() => {
+                return this.state.authentication ? (
+                  <div>
+                    <Scroller
+                      deviceSwitch={this.state.device}
+                      signout={this.logOut.bind(this)}
+                      fData={searchContent}
+                    />
+                  </div>
+                ) : (
+                  <Home />
+                );
+              }}
+            />
+            <Route
+              render={() => (
                 <div>
-                  <Scroller
-                    deviceSwitch={this.state.device}
-                    signout={this.logOut.bind(this)}
+                  {console.log(this.props)}
+                  <Profile
+                    switchView={this.state.isYourSite}
+                    signout={() => this.logOut()}
                     fData={searchContent}
+                    refetchData={this.fetchData.bind(this)}
+                    user={this.state.user}
+                    id={this.state.id}
+                    initialSwitch={this.switchView}
                   />
                 </div>
-              ) : (
-                <Home />
-              );
-            }}
+              )}
+            />
+          </Switch>
+        </MediaQuery>
+        <MediaQuery query="(max-width: 767px)">
+          {console.log("this is desktop width")}
+          <Header
+            token={this.state.authentication}
+            button={this.logOut.bind(this)}
+            fData={this.fetchData.bind(this)}
+            loader={() => this.setState(prev => ({ active: !prev.active }))}
           />
-          <Route
-            render={() => (
-              <div>
-                {console.log(this.props)}
-                <Profile
-                  switchView={this.state.isYourSite}
-                  signout={() => this.logOut()}
-                  fData={searchContent}
-                  refetchData={this.fetchData.bind(this)}
-                  user={this.state.user}
-                  id={this.state.id}
-                  initialSwitch={this.switchView}
-                />
-              </div>
-            )}
-          />
-        </Switch>
+          <Loader active={this.state.active} />
+          {this.state.authentication === false ? null : (
+            <Utils
+              onTextChange={text => {
+                this.setState({ searchString: text });
+                console.log(text);
+              }}
+              device={this.state.device}
+              switchView={this.switchView.bind(this)}
+              deviceSwitch={this.deviceSwitch.bind(this)}
+            />
+          )}
+          <Switch>
+            <Route
+              exact
+              path="/"
+              render={() => {
+                return this.state.authentication ? (
+                  <div>
+                    <Scroller
+                      deviceSwitch="mobile"
+                      signout={this.logOut.bind(this)}
+                      fData={searchContent}
+                    />
+                  </div>
+                ) : (
+                  <Home />
+                );
+              }}
+            />
+            <Route
+              render={() => (
+                <div>
+                  {console.log(this.props)}
+                  <Profile
+                    switchView={this.state.isYourSite}
+                    signout={() => this.logOut()}
+                    fData={searchContent}
+                    refetchData={this.fetchData.bind(this)}
+                    user={this.state.user}
+                    id={this.state.id}
+                    initialSwitch={this.switchView}
+                    deviceSwitch="mobile"
+                  />
+                </div>
+              )}
+            />
+          </Switch>
+        </MediaQuery>
       </div>
     );
   }
