@@ -1,6 +1,6 @@
 .scroller {
   width: calc(100vw - 35px);
-  height: calc(100vh - 128px);
+  height: calc(100vh - 105px);
   overflow-x: auto;
   overflow-y: visible;
   -webkit-overflow-scrolling: touch;
@@ -20,12 +20,12 @@
   vertical-align: top;
   margin-right: 50px;
   // width: 52%;
-  height: 62vh;
+  height: calc(100vh - 135px);
   opacity: 0;
   animation: bounceIn 400ms cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
 
   img {
-    height: 100%;
+    height: calc(100vh - 250px);
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
     display: block;
