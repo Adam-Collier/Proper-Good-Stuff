@@ -3,8 +3,10 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 40px 0px 35px;
+  padding: 0px 40px 0px 35px;
   height: 50.797px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  margin-bottom: 10px;
 }
 
 .search {
@@ -36,16 +38,16 @@
 }
 
 .device-switch {
-  width: 120px;
-  padding: 12px 40px 0 0;
+  width: 75px;
+  padding: 4px 0px 0 0;
   fill: #2c2c2c;
   cursor: pointer;
 }
 
 .nav {
-  h1 {
+  h3 {
     display: inline-block;
-    margin-right: 30px;
+    margin: 0 30px 0 0;
     cursor: pointer;
     color: rgb(233, 233, 233);
   }
