@@ -115,7 +115,7 @@ router.post("/api", (req, res) => {
           await page.goto(req.body.website);
 
           // desktop
-          await page.setViewport({ width: 1440, height: 850 });
+          await page.setViewport({ width: 1400, height: 1500 });
           await timeout(7000);
           await page.screenshot({ type: "jpeg" }).then(data => {
             cloudinary.uploader.upload(
@@ -141,7 +141,7 @@ router.post("/api", (req, res) => {
               "Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1",
             viewport: {
               width: 375,
-              height: 550,
+              height: 667,
               deviceScaleFactor: 2,
               isMobile: true,
               hasTouch: true,
