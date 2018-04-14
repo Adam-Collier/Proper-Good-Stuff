@@ -89,7 +89,7 @@ class Tabs extends Component {
     console.log(isSite);
     this.props.switchView(isSite);
     console.log(this.props);
-    document.querySelectorAll("h1").forEach(x => {
+    document.querySelectorAll("h3").forEach(x => {
       x.classList.remove("active");
     });
     e.target.classList.add("active");
@@ -98,10 +98,10 @@ class Tabs extends Component {
   render() {
     return (
       <div className="nav">
-        <h1 onClick={e => this.handleClick(e, true)} className="active">
+        <h3 onClick={e => this.handleClick(e, true)} className="active">
           Your Sites
-        </h1>
-        <h1 onClick={e => this.handleClick(e, false)}>Account</h1>
+        </h3>
+        <h3 onClick={e => this.handleClick(e, false)}>Account</h3>
       </div>
     );
   }
