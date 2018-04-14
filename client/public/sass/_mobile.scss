@@ -1,6 +1,6 @@
 @media (max-width: 767px) {
   h2 {
-    margin: 0rem 0 0.3rem;
+    margin: 0rem 0 0.01rem;
   }
   .device-switch {
     display: none;
@@ -10,13 +10,15 @@
     display: none;
   }
 
-  .utils,
   .header {
     padding: 0px 20px;
+    height: 48px;
   }
 
-  .header {
-    margin-bottom: 8px;
+  .utils {
+    height: 42px;
+    margin-bottom: 6px;
+    padding: 0px 20px 0px 16px;
   }
 
   .header svg:nth-child(1) {
@@ -28,13 +30,42 @@
 
     input {
       width: 100%;
+      height: 18px;
+      -webkit-appearance: none;
     }
   }
 
-  .nav h1 {
-    font-size: 1.05rem;
+  .nav h3 {
+    font-size: 1.1rem;
     margin-right: 0px;
     margin-left: 15px;
+  }
+
+  .scroller {
+    height: calc(100vh - 155px);
+  }
+
+  .site {
+    height: calc(100vh - 155px);
+
+    img {
+      height: calc(100vh - 270px);
+    }
+
+    div {
+      position: static;
+    }
+  }
+
+  .site svg {
+    width: 32px;
+    top: calc(0% + 20px);
+    left: auto;
+    right: 14px;
+  }
+
+  .site a {
+    margin-bottom: 8px;
   }
 
   .scroller {
