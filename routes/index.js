@@ -115,8 +115,9 @@ router.post("/api", (req, res) => {
           await page.goto(req.body.website);
 
           // desktop
-          await page.setViewport({ width: 1400, height: 1500 });
+          await page.setViewport({ width: 1500, height: 1400 });
           await timeout(7000);
+
           await page.screenshot({ type: "jpeg" }).then(data => {
             cloudinary.uploader.upload(
               `data:image/jpeg;base64,${data.toString("base64")}`,
@@ -134,6 +135,11 @@ router.post("/api", (req, res) => {
             );
           });
 
+          page.on("pageerror", function(err) {
+            theTempValue = err.toString();
+            console.log("Page error: " + theTempValue);
+          });
+
           // mobile
           await page.emulate({
             name: "iPhone 6",
@@ -148,6 +154,8 @@ router.post("/api", (req, res) => {
               isLandscape: false
             }
           });
+
+          await timeout(3000);
           await page
             .screenshot({
               type: "jpeg"
@@ -162,7 +170,11 @@ router.post("/api", (req, res) => {
                     if (err) return console.log(err);
                     else {
                       console.log("success!!!");
-                      res.json({ finished: "yeah boyy" });
+                      res.json({
+                        finished: "yeah boyy",
+                        info: saveSite[0],
+                        author: decoded.name
+                      });
                     }
                   });
                   return;
@@ -190,6 +202,12 @@ router.post("/delete", (req, res) => {
         cloudinary.uploader.destroy(public_id, function(result) {
           console.log(result);
         });
+        cloudinary.uploader.destroy(req.body.mobile.slice(62, -4), function(
+          result
+        ) {
+          console.log(result);
+        });
+        console.log(req.body);
         user.sites.forEach((x, i) => {
           console.log(x._id);
           if (x._id == req.body.site) {
