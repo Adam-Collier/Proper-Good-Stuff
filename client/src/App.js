@@ -8,7 +8,6 @@ import { Home } from "./components/Home";
 import Profile from "./components/Profile";
 import Scroller from "./components/Scroller";
 import Utils from "./components/Utils";
-import Loader from "./components/Loader";
 import { Route, Switch, withRouter } from "react-router-dom";
 
 class App extends Component {
@@ -19,7 +18,8 @@ class App extends Component {
       data: [],
       user: "",
       id: "",
-      active: false,
+      loader: false,
+      loaderInfo: [],
       searchString: "",
       isYourSite: true,
       device: "desktop"
@@ -80,9 +80,26 @@ class App extends Component {
       : this.setState({ device: "desktop" });
   };
 
+  loaderInfo = obj => {
+    // this.setState({ loaderInfo: obj });
+    if (obj.desktop) {
+      let currentState = this.state.loaderInfo;
+      console.log(currentState);
+      currentState[currentState.length - 1].desktop = obj.desktop;
+      currentState[currentState.length - 1].mobile = obj.mobile;
+      currentState[currentState.length - 1].author = obj.author;
+
+      this.setState({ loaderInfo: currentState });
+      console.log(this.state.loaderInfo);
+    } else {
+      this.setState(prevState => ({
+        loaderInfo: [...prevState.loaderInfo, obj]
+      }));
+    }
+  };
+
   render() {
     let searchContent = this.state.data.filter(sites => {
-      console.log(sites.website);
       return sites.website
         .toLowerCase()
         .includes(this.state.searchString.toLowerCase());
@@ -95,9 +112,11 @@ class App extends Component {
             token={this.state.authentication}
             button={this.logOut.bind(this)}
             fData={this.fetchData.bind(this)}
-            loader={() => this.setState(prev => ({ active: !prev.active }))}
+            loader={() => this.setState(prev => ({ loader: !prev.loader }))}
+            loaderInfo={this.loaderInfo.bind(this)}
           />
-          <Loader active={this.state.active} />
+
+          {/* <Loader loader={this.state.loader} /> */}
           {this.state.authentication === false ? null : (
             <Utils
               onTextChange={text => {
@@ -120,6 +139,8 @@ class App extends Component {
                       deviceSwitch={this.state.device}
                       signout={this.logOut.bind(this)}
                       fData={searchContent}
+                      loader={this.state.loader}
+                      loaderInfo={this.state.loaderInfo}
                     />
                   </div>
                 ) : (
@@ -152,9 +173,7 @@ class App extends Component {
             token={this.state.authentication}
             button={this.logOut.bind(this)}
             fData={this.fetchData.bind(this)}
-            loader={() => this.setState(prev => ({ active: !prev.active }))}
           />
-          <Loader active={this.state.active} />
           {this.state.authentication === false ? null : (
             <Utils
               onTextChange={text => {
