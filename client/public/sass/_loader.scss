@@ -1,44 +1,127 @@
 .loader {
-  height: calc(100%);
-  width: 100%;
-  flex-direction: column;
-  background: #ffffff;
-  position: fixed;
-  top: 55px;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 9999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #2c2c2c;
-  text-align: center;
+  > span {
+    position: relative;
+    display: block;
 
-  h1 {
-    margin-bottom: 2rem;
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+      z-index: -1;
+      border-radius: 5px;
+    }
   }
 
-  div {
-    margin-top: -70px;
-    width: 35%;
-    max-width: 600px;
+  img {
+    // width: calc((100vh - 250px) * 1.07);
+    // height: calc(100vh - 250px);
+    // animation: fadein 800ms ease-in-out forwards;
   }
 
-  svg {
-    width: 100%;
-    animation: float 1500ms ease-in-out infinite;
+  // h2,
+  // p,
+  // a > span {
+  //   position: relative;
+
+  //   &:after {
+  //     content: "";
+  //     position: absolute;
+  //     top: 0;
+  //     right: 0;
+  //     bottom: 0;
+  //     left: 0;
+  //     border-radius: 3px;
+  //     background: linear-gradient(
+  //       90deg,
+  //       rgb(235, 235, 235) 22%,
+  //       rgb(209, 209, 209) 50%,
+  //       rgb(235, 235, 235) 78%
+  //     );
+  //     background-size: 600% auto;
+  //     animation: loader-trans 3s forwards infinite;
+  //   }
+  // }
+
+  h2 {
+    display: inline-block;
+  }
+
+  a > span {
+    display: inline-block;
+  }
+
+  a {
+    padding-left: 0px;
   }
 }
 
-@keyframes float {
+@keyframes loader-trans {
   0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-8px);
+    background-position: 100% 50%;
   }
   100% {
-    transform: translateY(0px);
+    background-position: 0% 50%;
   }
 }
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes bounceIn {
+  from,
+  20%,
+  40%,
+  60%,
+  80%,
+  to {
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+
+  0% {
+    opacity: 0;
+    -webkit-transform: scale3d(0.9, 0.9, 0.9);
+    transform: scale3d(0.9, 0.9, 0.9);
+  }
+
+  60% {
+    -webkit-transform: scale3d(1.01, 1.01, 1.01);
+    transform: scale3d(1.01, 1.01, 1.01);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+// .loaded {
+//   h2 {
+//     &:after {
+//       animation: loaded 600ms 500ms ease-in-out forwards;
+//     }
+//   }
+//   a > span {
+//     &:after {
+//       animation: loaded 800ms 500ms ease-in-out forwards;
+//     }
+//   }
+//   p {
+//     &:after {
+//       animation: loaded 1600ms 500ms ease-in-out forwards;
+//     }
+//   }
+//   img {
+//     animation: fadein 800ms 300ms ease-in-out forwards;
+//   }
+// }
