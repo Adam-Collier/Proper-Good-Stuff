@@ -23,31 +23,82 @@ export default class Form extends Component {
   }
 
   handleSubmit(event) {
-    this.props.loader();
-
-    console.log(this.state.siteTitle);
     let localS = localStorage.getItem("token");
     // alert('A name was submitted: ' + this.state.value);
     event.preventDefault();
     console.log(this.props.fData());
-    fetch("/api", {
-      method: "POST",
-      body: JSON.stringify({
-        website: this.state.siteUrl,
-        title: this.state.siteTitle
-      }),
+
+    let siteUrl =
+      this.state.siteUrl.includes("http") === true
+        ? this.state.siteUrl
+        : `https://${this.state.siteUrl}`;
+
+    let self = this;
+
+    let errorStrip = errorText => {
+      return `
+<div class="error">${errorText}</div>
+`;
+    };
+
+    fetch(siteUrl, {
+      method: "get",
       headers: new Headers({
         "Content-Type": "application/json",
-        jwt: localS
+        "Access-Control-Allow-Origin": "*"
+      }),
+      mode: "no-cors"
+    })
+      .then(function(response) {
+        let info = { url: self.state.siteUrl, title: self.state.siteTitle };
+        self.props.loaderInfo(info);
+        self.props.fData();
+
+        fetch("/api", {
+          method: "POST",
+          body: JSON.stringify({
+            website: self.state.siteUrl,
+            title: self.state.siteTitle
+          }),
+          headers: new Headers({
+            "Content-Type": "application/json",
+            jwt: localS
+          })
+        })
+          .then(response => {
+            return response.json();
+          })
+          .then(data => {
+            let updatedInfo = {
+              url: self.state.siteUrl,
+              title: self.state.siteTitle,
+              desktop: data.info.desktop,
+              mobile: data.info.mobile,
+              author: data.author
+            };
+            // self.props.loader();
+            self.props.loaderInfo(updatedInfo);
+            self.props.fData();
+            // document.querySelector(".loader").classList.add("loaded");
+          });
+        self.setState({ siteTitle: "", siteUrl: "" });
       })
-    }).then(() => {
-      console.log("posted");
-      this.props.fData();
-      setTimeout(() => {
-        this.props.loader();
-      }, 300);
-    });
-    this.setState({ siteTitle: "", siteUrl: "" });
+      .catch(function(err) {
+        console.log(err);
+        if (err) {
+          document
+            .querySelector("form")
+            .insertAdjacentHTML(
+              "beforeEnd",
+              errorStrip("please enter a valid URL")
+            );
+          setTimeout(() => {
+            document.querySelector(".error").remove();
+          }, 2000);
+          self.setState({ siteTitle: "", siteUrl: "" });
+          return;
+        }
+      });
   }
 
   render() {
