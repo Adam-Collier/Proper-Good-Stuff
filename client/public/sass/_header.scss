@@ -36,6 +36,7 @@
     display: inline-block;
     line-height: 1;
     padding-right: 6px;
+    position: relative;
 
     input[type="submit"] {
       height: 100%;
@@ -68,6 +69,18 @@
         border-radius: 3px 0px 0px 3px;
         border-right: 1px rgb(238, 238, 238) solid;
       }
+    }
+
+    .error {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 351px;
+      background-color: rgb(223, 75, 75);
+      border-radius: 3px 0px 0px 3px;
+      padding-left: 10px;
+      font-size: 0.9rem;
     }
   }
 }
