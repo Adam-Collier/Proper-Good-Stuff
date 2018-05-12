@@ -32,7 +32,11 @@ export const Header = props => {
       <div>
         {props.token ? (
           <div>
-            <Form fData={props.fData} loader={props.loader} />
+            <Form
+              fData={props.fData}
+              loader={props.loader}
+              loaderInfo={props.loaderInfo}
+            />
             <p>
               <Link to="/profile">Profile</Link>
             </p>
