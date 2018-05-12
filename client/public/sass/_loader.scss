@@ -15,36 +15,6 @@
     }
   }
 
-  img {
-    // width: calc((100vh - 250px) * 1.07);
-    // height: calc(100vh - 250px);
-    // animation: fadein 800ms ease-in-out forwards;
-  }
-
-  // h2,
-  // p,
-  // a > span {
-  //   position: relative;
-
-  //   &:after {
-  //     content: "";
-  //     position: absolute;
-  //     top: 0;
-  //     right: 0;
-  //     bottom: 0;
-  //     left: 0;
-  //     border-radius: 3px;
-  //     background: linear-gradient(
-  //       90deg,
-  //       rgb(235, 235, 235) 22%,
-  //       rgb(209, 209, 209) 50%,
-  //       rgb(235, 235, 235) 78%
-  //     );
-  //     background-size: 600% auto;
-  //     animation: loader-trans 3s forwards infinite;
-  //   }
-  // }
-
   h2 {
     display: inline-block;
   }
@@ -104,24 +74,3 @@
     transform: scale3d(1, 1, 1);
   }
 }
-
-// .loaded {
-//   h2 {
-//     &:after {
-//       animation: loaded 600ms 500ms ease-in-out forwards;
-//     }
-//   }
-//   a > span {
-//     &:after {
-//       animation: loaded 800ms 500ms ease-in-out forwards;
-//     }
-//   }
-//   p {
-//     &:after {
-//       animation: loaded 1600ms 500ms ease-in-out forwards;
-//     }
-//   }
-//   img {
-//     animation: fadein 800ms 300ms ease-in-out forwards;
-//   }
-// }
